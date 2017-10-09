@@ -23,4 +23,14 @@ TP 1
 * Faites un rapport d'une page maximum pour expliquer les nouvelles règles implémentées.
 * Veuillez à respecter la grille d'évaluation.
 
-La date de rendu est sur le [site du cours](hyc.io/teaching/java.html) et doit être rendu sous forme de [pull-request](https://help.github.com/articles/about-pull-requests/).
+La date de rendu est sur le [site du cours](hyc.io/teaching/java.html).
+
+TP 2
+====
+
+* Lire l'interface `LecturePseudo` pour lire le pseudo d'un joueur.
+* Implémenter cette interface avec `LectureConsole` et `LectureFichier` pour lire les pseudos d'un fichier et de la console.
+* Ajouter une classe `MenuPseudo` qui propose une méthode `public LecturePseudo lirePseudo()` qui va demander proposer un menu pour que l'utilisateur puisse choisir de quelles manières il veut lire les pseudos et renvoyer la classe correspondante.
+* Utiliser `MenuPseudo` dans votre méthode `main` principale.
+
+La date de rendu est sur le [site du cours](hyc.io/teaching/java.html).
