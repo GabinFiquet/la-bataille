@@ -10,6 +10,8 @@
 // limitations under the License.
 package upmc.game;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -17,7 +19,7 @@ import java.util.Scanner;
  */
 public class Bataille {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         /**
          * Initialisation variables
          */
@@ -27,8 +29,8 @@ public class Bataille {
         boolean bataille = false;
         Paquet deckTemp = new Paquet(false);
         Paquet deck = new Paquet(true);
-        Joueur joueur1 = new Joueur("Default1");
-        Joueur joueur2 = new Joueur("Default2");
+        Joueur joueur1 = new Joueur("Joueur1");
+        Joueur joueur2 = new Joueur("Joueur2");
         Carte carte1;
         Carte carte2;
 
@@ -36,8 +38,8 @@ public class Bataille {
         System.out.println(" La Bataille\n");
         System.out.println("Règle :\n - Chaque manche les deux joueurs jouent leurs cartes en meme temps.");
         System.out.println(" - Celui qui à la plus grande valeur gagne la manche.");
-        System.out.println(" - Si les valeurs sont égal il y a bataille et il faut re-jouer chacun une nouvelle carte.");
-        System.out.println("\nBut du jeu : avoir toute les cartes.");
+        System.out.println(" - Si les valeurs sont égales il y a bataille et il faut re-jouer chacun une nouvelle carte.");
+        System.out.println("\nBut du jeu : avoir toutes les cartes.");
         System.out.println("\n BONNE CHANCE");
         deck.melange();
 
@@ -52,12 +54,30 @@ public class Bataille {
         scan.nextLine();
 
         //Choix du nom des joueurs
-        System.out.println("Nom du Joueur 1 : ");
-        joueur1.setNom(scan.nextLine());
         if (mode == 1) {
-            System.out.println("Nom du Joueur 2 : ");
-            joueur2.setNom(scan.nextLine());
+            MenuPseudo pseudos = new MenuPseudo();
+            LecturePseudo lecturePseudo;            
+            ArrayList<String> listePseudos = new ArrayList<String>();
+            
+            lecturePseudo = pseudos.modeLecturePseudo();
+            for(int i = 0; i < listePseudos.size(); i++) {
+                if (i == 0) { 
+                    joueur1 = new Joueur(listePseudos.get(i));
+                }else{
+                    joueur2 = new Joueur(listePseudos.get(i)); 
+                }
+            }
+            
+          /**
+           * code du TP1
+           *System.out.println("Nom du Joueur 1 : ");
+           *joueur1.setNom(scan.nextLine());
+           * System.out.println("Nom du Joueur 2 : ");
+           *joueur2.setNom(scan.nextLine());
+           */
         } else {
+            System.out.println("Nom du Joueur 1 : ");
+            joueur1.setNom(scan.nextLine());
             joueur2.setNom("Ordinateur");
         }
 

@@ -9,7 +9,7 @@ public class Carte {
     private int couleur;
 
     public static String tableauCouleur[] = {" de Trèfle", " de Cœur", " de Carreau", " de Pique"};
-    public static String tableauValeur[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Valet", "Dame", "Roi", "1"};
+    public static String tableauValeur[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Valet", "Dame", "Roi", "As"};
 
     /**
      * Constructeur d'une carte

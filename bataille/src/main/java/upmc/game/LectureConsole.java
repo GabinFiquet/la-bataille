@@ -1,14 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package upmc.game;
 
-/**
- *
- * @author licence
- */
-public class LectureConsole {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class LectureConsole implements LecturePseudo{
     
+    private ArrayList<String> pseudo = new ArrayList<String>(); 
+        
+    public ArrayList<String> lirePseudo() {
+        
+        for(int joueurNo = 1; joueurNo<=2; joueurNo++) {
+            System.out.println("Veuillez entrer le nom du joueur " + joueurNo);
+            Scanner sc = new Scanner(System.in);
+            this.pseudo.add(sc.nextLine());
+        }
+        return this.pseudo;
+    }
 }
