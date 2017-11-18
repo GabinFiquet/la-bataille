@@ -2,7 +2,6 @@
 package upmc.game;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,19 +12,14 @@ public class Bataille {
     public static void main(String[] args) throws IOException {
         /**
          * Initialisation variables
-         */
-        
-        Scanner scan = new Scanner(System.in);
-        //int mode = 0;
-        
+         */    
+        Scanner scan = new Scanner(System.in);      
         int resultatManche = 0;
         boolean bataille = false;
         Paquet deckTemp = new Paquet(false);
         Paquet deck = new Paquet(true);
-        
         Joueur joueur1 = new Joueur("Joueur1");
         Joueur joueur2 = new Joueur("Joueur2");
-        
         Carte carte1;
         Carte carte2;
 
@@ -52,10 +46,6 @@ public class Bataille {
             joueur1.setNom(scan.nextLine());
             joueur2.setNom("Ordinateur");
         }
-
-        
-
-        
 
         //Distribution egales des cartes
         while (!deck.estVide()) {
