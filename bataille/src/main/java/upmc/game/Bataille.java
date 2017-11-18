@@ -1,13 +1,4 @@
-// Copyright 2017 Pierre Talbot (IRCAM)
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//     http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+
 package upmc.game;
 
 import java.io.IOException;
@@ -18,19 +9,23 @@ import java.util.Scanner;
  * Bataille est la classe qui contient la methode principale du jeu de bataille
  */
 public class Bataille {
-
+    
     public static void main(String[] args) throws IOException {
         /**
          * Initialisation variables
          */
+        
         Scanner scan = new Scanner(System.in);
-        int mode = 0;
+        //int mode = 0;
+        
         int resultatManche = 0;
         boolean bataille = false;
         Paquet deckTemp = new Paquet(false);
         Paquet deck = new Paquet(true);
+        
         Joueur joueur1 = new Joueur("Joueur1");
         Joueur joueur2 = new Joueur("Joueur2");
+        
         Carte carte1;
         Carte carte2;
 
@@ -44,42 +39,23 @@ public class Bataille {
         deck.melange();
 
         //Choix du mode de jeu
-        while (mode != 1 && mode != 2 && mode != 3) {
-            System.out.println("\nQuel mode de jeu voulez-vous ?");
-            System.out.println(" 1. À deux joueurs\n 2. En solo contre l'ordinateur");
-            System.out.println("Votre choix : ");
-            mode = scan.nextInt();
-        }
-        //vide la ligne
-        scan.nextLine();
+        int mode = modePartie();
 
         //Choix du nom des joueurs
+        System.out.println("Nom du Joueur 1 : ");
+        joueur1.setNom(scan.nextLine());
         if (mode == 1) {
-            MenuPseudo pseudos = new MenuPseudo();
-            LecturePseudo lecturePseudo;            
-            ArrayList<String> listePseudos = new ArrayList<String>();
-            
-            lecturePseudo = pseudos.modeLecturePseudo();
-            for(int i = 0; i < listePseudos.size(); i++) {
-                if (i == 0) { 
-                    joueur1 = new Joueur(listePseudos.get(i));
-                }else{
-                    joueur2 = new Joueur(listePseudos.get(i)); 
-                }
-            }
-            
-          /**
-           * code du TP1
-           *System.out.println("Nom du Joueur 1 : ");
-           *joueur1.setNom(scan.nextLine());
-           * System.out.println("Nom du Joueur 2 : ");
-           *joueur2.setNom(scan.nextLine());
-           */
+            System.out.println("Nom du Joueur 2 : ");
+            joueur2.setNom(scan.nextLine());
         } else {
             System.out.println("Nom du Joueur 1 : ");
             joueur1.setNom(scan.nextLine());
             joueur2.setNom("Ordinateur");
         }
+
+        
+
+        
 
         //Distribution egales des cartes
         while (!deck.estVide()) {
@@ -156,6 +132,21 @@ public class Bataille {
             afficheGagnant(joueur1, joueur2);
 
         }
+    }
+    
+    public static int modePartie (){
+        int mode = 0;
+        Scanner scan = new Scanner(System.in);
+        
+        while (mode != 1 && mode != 2 && mode != 3) {
+            System.out.println("\nQuel mode de jeu voulez-vous ?");
+            System.out.println(" 1. À deux joueurs\n 2. En solo contre l'ordinateur");
+            System.out.println("Votre choix : ");
+            mode = scan.nextInt();
+        }
+        //vide la ligne
+        scan.nextLine();
+        return mode;
     }
 
     /**

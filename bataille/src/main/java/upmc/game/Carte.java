@@ -18,8 +18,8 @@ public class Carte {
         this.valeur = pvaleur;
         this.couleur = pcouleur;
     }
-
-    /**
+   
+     /**
      * Retourne la valeur de la carte
      */
     public int getValeur() {
